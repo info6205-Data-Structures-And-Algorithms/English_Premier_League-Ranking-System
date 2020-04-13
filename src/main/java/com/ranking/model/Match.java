@@ -6,6 +6,7 @@
 package com.ranking.model;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -13,9 +14,14 @@ import java.util.Date;
  */
 public class Match {
 
+    // season	home_team_name	away_team_name	date_string	full_time_result	home_goals	away_goals	half_time_HOME_Team_score	half_time_Away_Team_score
+    
     private String homeTeam;
     private String awayTeam;
-    private Date date;
+    private int homeGoals;
+    private int awayGoals;
+    private int halfTimeHomeTeamGoals;
+    private int halfTimeAwayTeamGoals;
     
     private int season;
     
@@ -23,6 +29,19 @@ public class Match {
 
     public Match() {
     }
+
+    public Match(String homeTeam, String awayTeam,  int homeGoals, int awayGoals, int halfTimeHomeTeamGoals, int halfTimeAwayTeamGoals, int season, Result result) {
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
+        this.homeGoals = homeGoals;
+        this.awayGoals = awayGoals;
+        this.halfTimeHomeTeamGoals = halfTimeHomeTeamGoals;
+        this.halfTimeAwayTeamGoals = halfTimeAwayTeamGoals;
+        this.season = season;
+        this.result = result;
+    }
+    
+    
 
     public int getSeason() {
         return season;
@@ -56,13 +75,80 @@ public class Match {
         this.awayTeam = awayTeam;
     }
 
-    public Date getDate() {
-        return date;
+//    public String getDate() {
+//        return date;
+//    }
+//
+//    public void setDate(String date) {
+//        this.date = date;
+//    }
+
+    public int getHomeGoals() {
+        return homeGoals;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setHomeGoals(int homeGoals) {
+        this.homeGoals = homeGoals;
     }
+
+    public int getAwayGoals() {
+        return awayGoals;
+    }
+
+    public void setAwayGoals(int awayGoals) {
+        this.awayGoals = awayGoals;
+    }
+
+    public int getHalfTimeHomeTeamGoals() {
+        return halfTimeHomeTeamGoals;
+    }
+
+    public void setHalfTimeHomeTeamGoals(int halfTimeHomeTeamGoals) {
+        this.halfTimeHomeTeamGoals = halfTimeHomeTeamGoals;
+    }
+
+    public int getHalfTimeAwayTeamGoals() {
+        return halfTimeAwayTeamGoals;
+    }
+
+    public void setHalfTimeAwayTeamGoals(int halfTimeAwayTeamGoals) {
+        this.halfTimeAwayTeamGoals = halfTimeAwayTeamGoals;
+    }
+
+    @Override
+    public int hashCode() {
+        return (homeTeam+""+awayTeam+""+season).hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Match other = (Match) obj;
+        if (this.season != other.season) {
+            return false;
+        }
+        if (!Objects.equals(this.homeTeam, other.homeTeam)) {
+            return false;
+        }
+        if (!Objects.equals(this.awayTeam, other.awayTeam)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Match{" + "homeTeam=" + homeTeam + ", awayTeam=" + awayTeam + ", homeGoals=" + homeGoals + ", awayGoals=" + awayGoals + ", halfTimeHomeTeamGoals=" + halfTimeHomeTeamGoals + ", halfTimeAwayTeamGoals=" + halfTimeAwayTeamGoals + ", season=" + season + ", result=" + result + '}';
+    }
+    
     
     
 
