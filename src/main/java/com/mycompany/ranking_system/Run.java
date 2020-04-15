@@ -21,7 +21,7 @@ public class Run {
     
 
     public Run(){
-        matchWinProbability("Burnley", "Watford");
+        matchWinProbability("Burnley", "Arsenal");
     }
     
     private static double currentSeason = 2020;
