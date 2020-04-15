@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,7 +23,7 @@ public class DataLoader {
 
     static String fileName;
     private static Map<String, Map<String, Map< Integer, Match>>> data; // Map< HomeTeamName, Map<AwayTeamName, Map<Season, Match>>>
-
+//    private static List<String> teamIndex; 
     public DataLoader(String pathfilename) {
         DataLoader.fileName = pathfilename;
         DataLoader.data = new HashMap();
