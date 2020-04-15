@@ -59,8 +59,27 @@ public class ColleyUtil {
         
         int numberOfTeams = data.size();
         RealMatrix colleyMatrix = MatrixUtils.createRealMatrix(new double[numberOfTeams][numberOfTeams]);
+        RealMatrix bMatrix = MatrixUtils.createColumnRealMatrix(new double[numberOfTeams]);
         
-         RealMatrix bMatrix = MatrixUtils.createColumnRealMatrix(new double[numberOfTeams]);
+        for (Map.Entry<String, Map<String, Map<Integer, Match>>> homeMap : data.entrySet()) {
+            String homeTeam = homeMap.getKey();
+            Map<String, Map<Integer, Match>> awayMap = homeMap.getValue();
+            
+            for (Map.Entry<String, Map<Integer, Match>> a : awayMap.entrySet()) {
+                String awayTeam = a.getKey();
+                Map<Integer, Match> seasonMap = a.getValue();
+                
+                for (Map.Entry<Integer, Match> seasonData : seasonMap.entrySet()) {
+                    Integer season = seasonData.getKey();
+                    Match match = seasonData.getValue();
+                    
+                    
+                    
+                }
+                
+            }
+            
+        }
 
     }
 

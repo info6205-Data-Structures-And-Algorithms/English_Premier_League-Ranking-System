@@ -59,7 +59,7 @@ public class DataLoader {
                 int away_goals = Integer.parseInt(values[5]);
                 int half_time_HOME_Team_score = Integer.parseInt(values[6]);
                 int half_time_Away_Team_score = Integer.parseInt(values[7]);
-
+                if (season < 2017 ) continue;
                 Match match = new Match(homeTeamName, awayTeamName,  home_goals, away_goals, half_time_HOME_Team_score, half_time_Away_Team_score, season, full_time_result);
                 
                 System.out.println(" READ COUNT - "+ ++counter + " --------------------- "+ match);
