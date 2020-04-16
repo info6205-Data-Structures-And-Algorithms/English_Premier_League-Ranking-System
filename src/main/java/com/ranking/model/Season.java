@@ -53,7 +53,15 @@ public class Season {
         for(String team : a){
         TeamIndexList.put(team, ++index);
         }
+        
+        printMap();
 
+    }
+    
+    public void printMap() {
+    	for(Map.Entry<String, Integer> entry : TeamIndexList.entrySet()) {
+    		System.out.println(year+","+entry.getKey() + "," + entry.getValue() );
+    	}
     }
     
     public void resetMatrix(){

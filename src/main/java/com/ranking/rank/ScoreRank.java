@@ -81,7 +81,7 @@ public class ScoreRank {
 	            Map<Integer, Match> matchesWithAllAwayTeams = awayTeams.getValue();
 	            //if (matchesWithAllAwayTeams != null) { 
 	            for(Map.Entry<Integer, Match> season : matchesWithAllAwayTeams.entrySet()){
-	            	if (season != null  && matchMap.get(homeTeam).containsKey(awayTeam) && matchMap.get(homeTeam).get(awayTeam).containsKey(season.getKey())) {
+	            	if (season != null  && matchMap.containsKey(homeTeam) && matchMap.get(homeTeam).containsKey(awayTeam) && matchMap.get(homeTeam).get(awayTeam).containsKey(season.getKey())) {
 	                int year = season.getKey();
 	                Match match = season.getValue();
 	                
@@ -139,7 +139,9 @@ public class ScoreRank {
 	        	Map<Integer, Match> matchesData = allVsAwayMatch.getValue().get(awayTeam);
 	           
 	            for(Map.Entry<Integer, Match> season : matchesData.entrySet()){
-	            	if (season != null && matchMap.get(homeTeam).containsKey(awayTeam) && matchMap.get(homeTeam).get(awayTeam).containsKey(season.getKey())) {
+	            	//System.out.println(season.getKey() + "  " + season.getValue());
+	            	//System.out.println(matchMap.containsKey(homeTeam) + "  " + matchMap.get(homeTeam).containsKey(awayTeam) + "  " + matchMap.get(homeTeam).get(awayTeam).containsKey(season.getKey()));
+	            	if (season != null && matchMap.containsKey(homeTeam) && matchMap.get(homeTeam).containsKey(awayTeam) && matchMap.get(homeTeam).get(awayTeam).containsKey(season.getKey())) {
 	                int year = season.getKey();
 	                Match match = season.getValue();
 	                
@@ -192,7 +194,7 @@ public class ScoreRank {
 	            Map<Integer, Match> matchesData = allVsHomeMatch.getValue().get(homeTeam);
 	            
 	            for(Map.Entry<Integer, Match> season : matchesData.entrySet()){
-	            	if (season != null  && matchMap.get(homeTeam).containsKey(awayTeam) && matchMap.get(homeTeam).get(awayTeam).containsKey(season.getKey())) {
+	            	if (season != null  && matchMap.containsKey(homeTeam) && matchMap.get(homeTeam).containsKey(awayTeam) && matchMap.get(homeTeam).get(awayTeam).containsKey(season.getKey())) {
 	                int year = season.getKey();
 	                Match match = season.getValue();
 	                
@@ -247,7 +249,7 @@ public class ScoreRank {
 	            Map<Integer, Match> matchesWithAllAwayTeams = allTeams.getValue();
 	            //if (matchesWithAllAwayTeams != null) {
 	            for(Map.Entry<Integer, Match> season : matchesWithAllAwayTeams.entrySet()){
-	            	if (season != null && matchMap.get(homeTeam).containsKey(awayTeam) && matchMap.get(homeTeam).get(awayTeam).containsKey(season.getKey())) {
+	            	if (season != null && matchMap.containsKey(homeTeam) && matchMap.get(awayTeam).containsKey(homeTeam) && matchMap.get(awayTeam).get(homeTeam).containsKey(season.getKey())) {
 	                int year = season.getKey();
 	                Match match = season.getValue();
 	                
@@ -302,7 +304,7 @@ public class ScoreRank {
 	    
 	
 	public static Result scoreApproximation(double homeTeamScore, double awayTeamScore) {
-		double boundPercentage = 15.0;
+		double boundPercentage = 10.0;
 		double highestScorer = Math.max(homeTeamScore, awayTeamScore);
 		double upperBound = (1 + (boundPercentage/100)) * highestScorer;
 		double lowerBound = (1 - (boundPercentage/100)) * highestScorer;

@@ -34,6 +34,11 @@ public class Match {
         this.season = season;
         this.isComplete = isComplete;
         this.isPredicted = isPredicted;
+        this.awayGoals = 0;
+        this.homeGoals = 0;
+        this.halfTimeAwayTeamGoals = 0;
+        this.halfTimeHomeTeamGoals = 0;
+        this.result = result;
     }
 
  

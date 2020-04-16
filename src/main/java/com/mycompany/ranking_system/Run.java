@@ -9,6 +9,7 @@ import com.ranking.loader.DataLoader;
 import com.ranking.model.Match;
 import com.ranking.model.Result;
 import com.ranking.rank.ScoreRank;
+import com.ranking.model.Season;
 import com.ranking.utility.ColleyUtil;
 
 import java.util.Arrays;
@@ -21,12 +22,36 @@ import java.util.Map;
  */
 public class Run {
     
+     private static final double currentSeason = 2020;
 
     public Run(){
-        matchWinProbability("Leicester", "Norwich");
+       devPrintAllRankingsForAllSeason();
     }
     
-    private static double currentSeason = 2020;
+    
+    public void devPrintAllRankingsForAllSeason(){
+        try{
+        for(Map.Entry<Integer, Season> entry : DataLoader.getSeasonList().entrySet()){
+            Integer year = entry.getKey();
+            Season season = entry.getValue();
+            
+            System.out.println(" Ranking for Season  ,"+year);
+            
+            for(Map.Entry<String, Double> rankEntry : season.getRanking().entrySet()){
+                String teamName = rankEntry.getKey();
+                Double rank = rankEntry.getValue();
+                
+                System.out.println(teamName+","+rank);
+            }
+            
+        }
+        
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+   
     public static void matchWinProbability(String homeTeam, String awayTeam){
         
         Map<String, Map<String, Map<Integer, Match>>> matchMap = DataLoader.getData();
@@ -315,35 +340,12 @@ public class Run {
     }
     
     public static void main(String args[]){
-    
-        new DataLoader("D:\\INFO 6205 Prof. Robin Hillyard\\Final Project\\English_Premier_League-Ranking-System\\LoadData.csv");
-        Map<String, Map<String, Map<Integer, Match>>> data = DataLoader.getData();
-        
-        Run run = new Run();
-//        int count = 0;
-//        
-//        for (Map.Entry<String, Map<String, Map<Integer, Match>>> entry : data.entrySet()) {
-//            String key = entry.getKey();
-//            Map<String, Map<Integer, Match>> value = entry.getValue();
-//            
-//            for (Map.Entry<String, Map<Integer, Match>> entry1 : value.entrySet()) {
-//                String k = entry1.getKey();
-//                Map<Integer, Match> v = entry1.getValue();
-//                
-//                for (Map.Entry<Integer, Match> entry2 : v.entrySet()) {
-//                    int k2 = entry2.getKey();
-//                    Match v2 = entry2.getValue();
-//                    
-//                    System.out.println("ROW : "+ ++count);
-//                    System.out.println(v2);
-//                    
-//                }
-//                
-//            }
-//            
-//        }
-        
-          
+    	try {
+        new DataLoader(".\\LoadData.csv"); //Loads Data File
+        DataLoader.loadScheduleData(".\\ScheduleData.csv");
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}  
     }
     
 }
