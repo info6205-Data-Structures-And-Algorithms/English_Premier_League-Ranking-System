@@ -8,6 +8,8 @@ package com.mycompany.ranking_system;
 import com.ranking.loader.DataLoader;
 import com.ranking.model.Match;
 import com.ranking.model.Result;
+import com.ranking.model.Season;
+import com.ranking.utility.ColleyUtil;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -19,12 +21,37 @@ import java.util.Map;
  */
 public class Run {
     
+     private static final double currentSeason = 2020;
 
     public Run(){
-        matchWinProbability("Burnley", "Watford");
+       // matchWinProbability("Burnley", "Watford");
+       devPrintAllRankingsForAllSeason();
     }
     
-    private static double currentSeason = 2020;
+    
+    public void devPrintAllRankingsForAllSeason(){
+        try{
+        for(Map.Entry<Integer, Season> entry : DataLoader.getSeasonList().entrySet()){
+            Integer year = entry.getKey();
+            Season season = entry.getValue();
+            
+            System.out.println(" Ranking for Season  ,"+year);
+            
+            for(Map.Entry<String, Double> rankEntry : season.getRanking().entrySet()){
+                String teamName = rankEntry.getKey();
+                Double rank = rankEntry.getValue();
+                
+                System.out.println(teamName+","+rank);
+            }
+            
+        }
+        
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+   
     public static void matchWinProbability(String homeTeam, String awayTeam){
         
         Map<String, Map<String, Map<Integer, Match>>> matchMap = DataLoader.getData();
@@ -239,7 +266,7 @@ public class Run {
     
     public static void main(String args[]){
     
-        new DataLoader("D:\\INFO 6205 Prof. Robin Hillyard\\Final Project\\English_Premier_League-Ranking-System\\LoadData.csv");
+        new DataLoader(".\\LoadData.csv");
         Map<String, Map<String, Map<Integer, Match>>> data = DataLoader.getData();
         
         Run run = new Run();
