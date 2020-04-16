@@ -8,9 +8,13 @@ package com.ranking.loader;
 
 import com.ranking.model.Match;
 import com.ranking.model.Result;
+import com.ranking.rank.ScoreRank;
+
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,10 +26,12 @@ import java.util.Map;
 public class DataLoader {
 
     static String fileName;
+    static String scheduleFileName;
     private static Map<String, Map<String, Map< Integer, Match>>> data; // Map< HomeTeamName, Map<AwayTeamName, Map<Season, Match>>>
 //    private static List<String> teamIndex; 
     public DataLoader(String pathfilename) {
         DataLoader.fileName = pathfilename;
+        
         DataLoader.data = new HashMap();
         loadData();
     }
@@ -105,6 +111,29 @@ public class DataLoader {
         } else {
             return (result.equalsIgnoreCase("a")) ? Result.AWAY : Result.DRAW;
         }
+    }
+    
+    public void loadScheduleData() throws FileNotFoundException, IOException {
+    	try{
+    		BufferedReader br = new BufferedReader(new FileReader(DataLoader.scheduleFileName));
+    		String line;
+    		String[] heads = br.readLine().split(",");
+            List<String[]> schedules = new ArrayList<>();
+            while ((line = br.readLine()) != null) {
+            	String[] values = line.split(",");
+            	schedules.add(values);
+            }
+            runMatchPrediction(schedules);
+    	}catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    public void runMatchPrediction(List<String[]> schedules) {
+    	for(String[] schedule : schedules) {
+    		Result result = ScoreRank.matchWinProbability(schedule[1], schedule[2]);
+        	//Match here
+    	}
     }
 
 }
