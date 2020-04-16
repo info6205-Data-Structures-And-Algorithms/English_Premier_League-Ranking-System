@@ -5,7 +5,6 @@
  */
 package com.ranking.model;
 
-import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -22,13 +21,22 @@ public class Match {
     private int awayGoals;
     private int halfTimeHomeTeamGoals;
     private int halfTimeAwayTeamGoals;
+    private boolean isComplete;
+    private boolean isPredicted;
     
     private int season;
     
     private Result result ;
 
-    public Match() {
+    public Match(String homeTeam, String awayTeam,int season,Result result,boolean isComplete,boolean isPredicted) {
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
+        this.season = season;
+        this.isComplete = isComplete;
+        this.isPredicted = isPredicted;
     }
+
+ 
 
     public Match(String homeTeam, String awayTeam,  int homeGoals, int awayGoals, int halfTimeHomeTeamGoals, int halfTimeAwayTeamGoals, int season, Result result) {
         this.homeTeam = homeTeam;
@@ -38,7 +46,25 @@ public class Match {
         this.halfTimeHomeTeamGoals = halfTimeHomeTeamGoals;
         this.halfTimeAwayTeamGoals = halfTimeAwayTeamGoals;
         this.season = season;
-        this.result = result;
+        this.result = result;        
+        this.isComplete = true;
+        this.isPredicted = false;
+    }
+
+    public boolean isIsComplete() {
+        return isComplete;
+    }
+
+    public void setIsComplete(boolean isComplete) {
+        this.isComplete = isComplete;
+    }
+
+    public boolean isIsPredicted() {
+        return isPredicted;
+    }
+
+    public void setIsPredicted(boolean isPredicted) {
+        this.isPredicted = isPredicted;
     }
     
     
