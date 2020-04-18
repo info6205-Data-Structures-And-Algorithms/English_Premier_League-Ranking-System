@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.ranking.loader.Constants;
 import com.ranking.loader.DataLoader;
 import com.ranking.model.Match;
 import com.ranking.model.Result;
@@ -11,7 +12,7 @@ import com.ranking.utility.ColleyUtil;
 
 public class ScoreRank {
 	
-		private static double currentSeason = 2020;
+		private static double currentSeason = Constants.year + 1;
 	    public static Result matchWinProbability(String homeTeam, String awayTeam){
 	        
 	        Map<String, Map<String, Map<Integer, Match>>> matchMap = DataLoader.getData();
@@ -39,9 +40,9 @@ public class ScoreRank {
 	            }
 	        }
 	        }
-	        System.out.println("Home vs Away Score");
-	        System.out.println("Home Team Score: " + homeTeamScore);
-	        System.out.println("Away Team Score: " + awayTeamScore);
+//	        System.out.println("Home vs Away Score");
+//	        System.out.println("Home Team Score: " + homeTeamScore);
+//	        System.out.println("Away Team Score: " + awayTeamScore);
 	        
 	        //AwayVsHome
 	        if (matchMap.containsKey(awayTeam) && matchMap.get(awayTeam).containsKey(homeTeam)) {
@@ -64,9 +65,9 @@ public class ScoreRank {
 	            }
 	        }
 	        }
-	        System.out.println("AwayVsHome");
-	        System.out.println("Home Team Score: " + homeTeamScore);
-	        System.out.println("Away Team Score: " + awayTeamScore);
+//	        System.out.println("AwayVsHome");
+//	        System.out.println("Home Team Score: " + homeTeamScore);
+//	        System.out.println("Away Team Score: " + awayTeamScore);
 	        
 	        Map<Integer, Double[]> seasonHomeAwayDraw;
 	        Map<Integer, Double[]> seasonRankedHomeAwayDraw;
@@ -126,9 +127,9 @@ public class ScoreRank {
 	        }
 	        }
 	        
-	        System.out.println("HomeVsAll");
-	        System.out.println("Home Team Score: " + homeTeamScore);
-	        System.out.println("Away Team Score: " + awayTeamScore);
+//	        System.out.println("HomeVsAll");
+//	        System.out.println("Home Team Score: " + homeTeamScore);
+//	        System.out.println("Away Team Score: " + awayTeamScore);
 	        
 	        //All vs AwayTeam
 	        seasonHomeAwayDraw = new HashMap<>();
@@ -182,9 +183,9 @@ public class ScoreRank {
 	            awayTeamRankedScore -= ((rankedScores[0]/rankedTotalGames) * 1.0 ) / (currentSeason - year);
 	        }
 	        
-	        System.out.println("AllVsAway");
-	        System.out.println("Home Team Score: " + homeTeamScore);
-	        System.out.println("Away Team Score: " + awayTeamScore);
+//	        System.out.println("AllVsAway");
+//	        System.out.println("Home Team Score: " + homeTeamScore);
+//	        System.out.println("Away Team Score: " + awayTeamScore);
 	        
 	        //AllVsHome
 	        seasonHomeAwayDraw = new HashMap<>();
@@ -235,9 +236,9 @@ public class ScoreRank {
 	            homeTeamRankedScore += ((rankedScores[2]/rankedTotalGames) * 1.0 ) / (currentSeason - year);
 	            homeTeamRankedScore -= ((rankedScores[0]/rankedTotalGames) * 1.0 ) / (currentSeason - year);
 	        }
-	        System.out.println("AllVsHome");
-	        System.out.println("Home Team Score: " + homeTeamScore);
-	        System.out.println("Away Team Score: " + awayTeamScore);
+//	        System.out.println("AllVsHome");
+//	        System.out.println("Home Team Score: " + homeTeamScore);
+//	        System.out.println("Away Team Score: " + awayTeamScore);
 	         
 	        //AwayVsAll
 	        seasonHomeAwayDraw = new HashMap<>();
@@ -291,14 +292,16 @@ public class ScoreRank {
 	            awayTeamRankedScore -= ((rankedScores[1]/rankedTotalGames) * 1.0 ) / (currentSeason - year);
 	        }
 	        }
-	        System.out.println("AwayVsAll");
-	        System.out.println("Home Team Score: " + homeTeamScore);
-	        System.out.println("Away Team Score: " + awayTeamScore);
+//	        System.out.println("AwayVsAll");
+//	        System.out.println("Home Team Score: " + homeTeamScore);
+//	        System.out.println("Away Team Score: " + awayTeamScore);
 	        
-	        System.out.println("Final Score: ");
-	        System.out.println("Home Team Score: " + homeTeamScore);
-	        System.out.println("Away Team Score: " + awayTeamScore);
-	        System.out.println("Prediction: " + ScoreRank.scoreApproximation(homeTeamScore, awayTeamScore));
+//	        System.out.println("Final Score: ");
+//	        System.out.println("Home Team Score: " + homeTeamScore);
+//	        System.out.println("Away Team Score: " + awayTeamScore);
+//	        System.out.println("Home Team Ranked Score:" + homeTeamRankedScore);
+//	        System.out.println("Away Team Ranked Score: " + awayTeamRankedScore);
+//	        System.out.println("Prediction: " + ScoreRank.scoreApproximation(homeTeamScore, awayTeamScore));
 	        return ScoreRank.scoreApproximation(homeTeamScore, awayTeamScore);
 	    }
 	    

@@ -54,7 +54,7 @@ public class Season {
         TeamIndexList.put(team, ++index);
         }
         
-        printMap();
+       // printMap();
 
     }
     

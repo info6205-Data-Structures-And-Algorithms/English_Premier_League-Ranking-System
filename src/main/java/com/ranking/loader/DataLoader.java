@@ -12,6 +12,9 @@ import com.ranking.model.Result;
 import com.ranking.rank.ScoreRank;
 import com.ranking.model.Season;
 import com.ranking.utility.ColleyUtil;
+
+import dnl.utils.text.table.TextTable;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -20,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
 
 /**
  *
@@ -89,7 +93,7 @@ public class DataLoader {
                 InsertMatch(match, season);
                 
                 
-                System.out.println(" READ COUNT - "+ ++counter + " --------------------- "+ match);
+//                System.out.println(" READ COUNT - "+ ++counter + " --------------------- "+ match);
      
 
             }
@@ -160,19 +164,22 @@ public class DataLoader {
             List<String[]> schedules = new ArrayList<>();
             while ((line = br.readLine()) != null) {
             	String[] values = line.split(",");
+            	Constants.year = Integer.parseInt(values[0]);
             	schedules.add(values);
             }
             runMatchPrediction(schedules);
             printPrediction();
             new Run();
-    	}catch (Exception e) {
+    	} catch (NumberFormatException nfe) {
+    		System.out.println("Number format Exception occured: Kindly check season feild data");
+    	} catch (Exception e) {
     		e.printStackTrace();
     	}
     }
     
     public static void runMatchPrediction(List<String[]> schedules) {
     	for(String[] schedule : schedules) {
-    		System.out.println(schedule[1] + "  " + schedule[2] );
+ //   		System.out.println(schedule[1] + "  " + schedule[2] );
     		Result result = ScoreRank.matchWinProbability(schedule[1], schedule[2]);
     		
         	//Match here
@@ -189,10 +196,24 @@ public class DataLoader {
     }
     
     public static void printPrediction() {
-    	Season season = DataLoader.getSeasonList().get(2019);
-    	for (Match match : season.getSeasonMatchList()) {
-    		if (match.isIsPredicted()) System.out.println(match);
+    	Season season = DataLoader.getSeasonList().get(Constants.year);
+    	int count = 0;
+    	for(Match match : season.getSeasonMatchList()) {
+    		if (match.isIsPredicted()) count++;
     	}
+    	String[][] result = new String[count][3];
+    	count = 0;
+    	String[] coulmns = new String[] {"Home Team", "Away Team", "Predicted Result"};
+    	for (Match match : season.getSeasonMatchList()) {
+    		if (match.isIsPredicted()) {
+    			result[count][0] = match.getHomeTeam();
+    			result[count][1] = match.getAwayTeam();
+    			result[count][2] = match.getResult().toString();
+    			count++;
+    	    };
+    	}
+    	TextTable tt = new TextTable(coulmns, result);
+    	tt.printTable();
     }
 
 }

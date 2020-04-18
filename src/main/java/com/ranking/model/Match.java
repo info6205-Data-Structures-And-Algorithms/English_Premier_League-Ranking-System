@@ -5,6 +5,8 @@
  */
 package com.ranking.model;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -23,6 +25,7 @@ public class Match {
     private int halfTimeAwayTeamGoals;
     private boolean isComplete;
     private boolean isPredicted;
+    private Date date;
     
     private int season;
     
@@ -175,7 +178,20 @@ public class Match {
         return true;
     }
 
-    @Override
+    public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
+	public void setDate(String date) {
+		long dateLong = Date.parse(date);
+		System.out.println(dateLong);
+	}
+
+	@Override
     public String toString() {
         return "Match{" + "homeTeam=" + homeTeam + ", awayTeam=" + awayTeam + ", homeGoals=" + homeGoals + ", awayGoals=" + awayGoals + ", halfTimeHomeTeamGoals=" + halfTimeHomeTeamGoals + ", halfTimeAwayTeamGoals=" + halfTimeAwayTeamGoals + ", season=" + season + ", result=" + result + '}';
     }

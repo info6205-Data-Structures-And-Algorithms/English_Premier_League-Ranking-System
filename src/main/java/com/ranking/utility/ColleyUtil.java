@@ -89,7 +89,7 @@ public class ColleyUtil {
                 double weight = 0.9;
                 int TeamAIndex = teamIndexList.get(match.getHomeTeam());
                 int TeamBIndex = teamIndexList.get(match.getAwayTeam());
-                System.out.println(TeamAIndex + "  " + TeamBIndex );
+                //System.out.println(TeamAIndex + "  " + TeamBIndex );
                 colleyMatrix.setEntry(TeamAIndex, TeamAIndex, (colleyMatrix.getEntry(TeamAIndex, TeamAIndex) + 1 * weight));
                 colleyMatrix.setEntry(TeamBIndex, TeamBIndex, (colleyMatrix.getEntry(TeamBIndex, TeamBIndex) + 1 * weight));
                 colleyMatrix.setEntry(TeamAIndex, TeamBIndex, (colleyMatrix.getEntry(TeamAIndex, TeamBIndex) - 1 * weight));
