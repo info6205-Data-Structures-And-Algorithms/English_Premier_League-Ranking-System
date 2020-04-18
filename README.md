@@ -40,28 +40,28 @@ Readings and Observation for 2019
 ----
 ### Ranking for 2019
 
-| Team Name        | Rank               |
-| ------------     |  --------------    |
-| Liverpool        | 0.9454085080378126 |
-| Manchester City  | 0.7048602215322984 |
-| Leicester        | 0.6694106480021411 |
-| Chelsea          | 0.5930182261454575 |
-| Manchester United| 0.5906559970322878 |
-| Tottenham        | 0.5862909751676493 |
-| Wolves           | 0.5571177156225713 |
-| Sheffield United | 0.520550199975902  |
-| Arsenal          | 0.5169361939616116 |
-| Crystal Palace   | 0.4842393741345027 |
-| Burnley          | 0.4653402544343726 |
-| Southampton      | 0.44455699910669816|
-| Newcastle United | 0.43895968937938135|
-| Everton          | 0.43114591004461067|
-| West Ham         | 0.38764273283299333|
-| Brighton         | 0.37094287363287537|
-| Aston Villa      | 0.3479952794917741 |
-| Bournemouth      | 0.3341815781938895 |
-| Watford          | 0.30826420704578006|
-| Norwich          | 0.30248241622548516|
+| Rank	    | Team Name 	     | Score              |
+| ---------- | ------------     |  --------------    |
+| 1 	       | Liverpool        | 0.9454085080378126 |
+| 2 	       | Manchester City  | 0.7048602215322984 |
+| 3 	       | Leicester        | 0.6694106480021411 |
+| 4 	       | Chelsea          | 0.5930182261454575 |
+| 5 	       | Manchester United| 0.5906559970322878 |
+| 6 	       | Tottenham        | 0.5862909751676493 |
+| 7 	       | Wolves           | 0.5571177156225713 |
+| 8 	       | Sheffield United | 0.520550199975902  |
+| 9 	       | Arsenal          | 0.5169361939616116 |
+| 10	       | Crystal Palace   | 0.4842393741345027 |
+| 11	       | Burnley          | 0.4653402544343726 |
+| 12	       | Southampton      | 0.44455699910669816|
+| 13	       | Newcastle United | 0.43895968937938135|
+| 14	       | Everton          | 0.43114591004461067|
+| 15	       | West Ham         | 0.38764273283299333|
+| 16	       | Brighton         | 0.37094287363287537|
+| 17	       | Aston Villa      | 0.3479952794917741 |
+| 18	       | Bournemouth      | 0.3341815781938895 |
+| 19	       | Watford          | 0.30826420704578006|
+| 20	       | Norwich          | 0.30248241622548516|
 
 
 ### Predicted Result for 2019
