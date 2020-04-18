@@ -1,9 +1,13 @@
+# INFO6205 34506 Program Structure & Algorithms SEC 03 Spring 2020 [BOS-2-TR] INFO6205.34506.202030
+
 # Prediction System for English Premier League
 EPL-Prediction-2019 is a  project of Northeastern University, Data Structures and Algorithms. This repo contains dataset,  fixtures of EPL season 2018/2019 and previous and Java files.
 
+
+
 ### Team Member
-* [Darshan Dedhia](https://github.com/darshan-dedhia)
-* [Ruchit Gandhi](https://github.com/ruchitGandhiNEU)
+* [Darshan Dedhia](https://github.com/darshan-dedhia) - 001054816
+* [Ruchit Gandhi](https://github.com/ruchitGandhiNEU) - 001067481
 
 ### Tech
 
